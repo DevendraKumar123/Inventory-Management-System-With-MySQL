@@ -102,7 +102,7 @@ order_find=Button(t,text='Find',height=2,width=10,bg='white',activebackground='s
 order_find.place(x=310,y=550)
 order_delete=Button(t,text='Delete',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=orderdelete)
 order_delete.place(x=440,y=550)
-
+#------------------------------close file----------------------------------------------------
 cldesh=Button(t,text='Deshboard Close',width=50,height=2,font=('arial',10,'bold'),bg='yellow',activebackground='red',activeforeground='yellow',command=cldesh)
 cldesh.pack(side=BOTTOM)
 #--------------------------------------Entry-----------------------------------
