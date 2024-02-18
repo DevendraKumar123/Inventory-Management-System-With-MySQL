@@ -30,11 +30,16 @@ from items_delete import*
 
 
 t=tkinter.Tk()
-t.geometry('600x800')
+t.geometry('600x650')
 t.iconbitmap('ims.ico')
 t.title('Dash Board Inventory Management System')
-
-
+#----------------------------Canvas--------------------------------------------
+t.config(bg='sky blue')
+t.minsize(600,650)
+t.maxsize(600,500)
+#--------------------------Function-------------------------------------
+def cldesh():
+    t.destroy()
 #----------------------------------------Label--------------------------------------
 company=Label(t,text='Comapny',height=2,width=100,bg='yellow',font=('arial',10,'bold')).place(x=-100,y=0)
 customer=Label(t,text='Customers',height=2,width=100,bg='yellow',font=('arial',10,'bold')).place(x=-100,y=100)
@@ -97,6 +102,9 @@ order_find=Button(t,text='Find',height=2,width=10,bg='white',activebackground='s
 order_find.place(x=310,y=550)
 order_delete=Button(t,text='Delete',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=orderdelete)
 order_delete.place(x=440,y=550)
+
+cldesh=Button(t,text='Deshboard Close',width=50,height=2,font=('arial',10,'bold'),bg='yellow',activebackground='red',activeforeground='yellow',command=cldesh)
+cldesh.pack(side=BOTTOM)
 #--------------------------------------Entry-----------------------------------
 
 t.mainloop()
