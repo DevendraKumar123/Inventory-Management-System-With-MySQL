@@ -7,7 +7,9 @@ def orderfind():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Orders')
+    t.title('Orders Find')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillorderid():
@@ -65,7 +67,7 @@ def orderfind():
     qty_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     qty_entry.place(x=150,y=220)
     #-----------------------------Button-----------------------------------------------------------
-    find=Button(t,text='Find Record',height=2,width=10,command=finddata).place(x=300,y=320)
+    find=Button(t,text='Find Record',height=2,width=10,command=finddata).place(x=300,y=400)
     close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
 
 

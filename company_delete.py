@@ -6,7 +6,9 @@ import pymysql
 def cdelete():
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company')
+    t.title('Company Delete')
+    t.config(bg='sky blue')
+    t.iconbitmap('ims.ico')
     lt=[]
 #----------------------------Function------------------------------------------------------
 

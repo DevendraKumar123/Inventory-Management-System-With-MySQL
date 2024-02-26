@@ -6,27 +6,32 @@ def billinsert():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Bill')
+    t.title('Bill Insert')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
 
     def insertdata():
-        db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
-        cur=db.cursor()
-        x=int(billid_entry.get())
-        xa=int(orderid_entry.get())
-        xb=int(custid_entry.get())
-        xc=billdate_entry.get()
-        xd=int(amount_entry.get())
-        sql="insert into bill values(%d,'%d','%d','%s','%d')"%(x,xa,xb,xc,xd)
-        cur.execute(sql)
-        db.commit()
-        messagebox.showinfo('Hi','Saved Record')
-        orderid_entry.delete(0,100)
-        custid_entry.delete(0,100)
-        billdate_entry.delete(0,100)
-        amount_entry.delete(0,100)
-        db.close()
+        if len(billid_entry.get())==0 or len(orderid_entry.get())==0  or len(custid_entry.get())==0 or len(billdate_entry.get())==0  or len(amount_entry.get())==0 :
+            messagebox.showerror("hi","Pls fill all data")
+        else:
+            db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
+            cur=db.cursor()
+            x=int(billid_entry.get())
+            xa=int(orderid_entry.get())
+            xb=int(custid_entry.get())
+            xc=billdate_entry.get()
+            xd=int(amount_entry.get())
+            sql="insert into bill values(%d,'%d','%d','%s','%d')"%(x,xa,xb,xc,xd)
+            cur.execute(sql)
+            db.commit()
+            messagebox.showinfo('Hi','Saved Record')
+            orderid_entry.delete(0,100)
+            custid_entry.delete(0,100)
+            billdate_entry.delete(0,100)
+            amount_entry.delete(0,100)
+            db.close()
 
     def closefile():
         t.destroy()

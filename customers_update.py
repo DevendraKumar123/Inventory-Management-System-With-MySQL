@@ -7,7 +7,9 @@ def custupdate():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Customers')
+    t.title('Customers Update')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillcustid():

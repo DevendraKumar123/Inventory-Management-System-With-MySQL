@@ -6,7 +6,9 @@ import pymysql
 def custfind():
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Customers')
+    t.title('Customers Find')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillcustid():

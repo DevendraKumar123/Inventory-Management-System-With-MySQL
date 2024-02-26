@@ -7,7 +7,9 @@ def billupdate():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Bill')
+    t.title('Bill Update')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillbillid():

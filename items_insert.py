@@ -6,27 +6,32 @@ import pymysql
 def iteminsert():
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Dispatch')
+    t.title('Item Insert')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
 
 
     def insertdata():
-        db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
-        cur=db.cursor()
-        x=int(itemsno_entry.get())
-        xa=itemsno_entry.get()
-        xb=itemname_entry.get()
-        xc=price_entry.get()
-        xd=qty.get()
-        sql="insert into items values(%d,'%d','%d','%s','%d')"%(x,xa,xb,xc,xd)
-        cur.execute(sql)
-        db.commit()
-        messagebox.showinfo('Hi','Saved Record')
-        itemname_entry.delete(0,100)
-        price_entry.delete(0,100)
-        qty_entry.delete(0,100)
-        db.close()
+        if len(itemsno_entry.get())==0 or len(itemname_entry.get())==0 or len(price_entry.get())==0 or len(qty_entry.get())==0:
+            messagebox.showerror('Item','Please Fill all data')
+        else:
+            db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
+            cur=db.cursor()
+            x=int(itemsno_entry.get())
+            xa=itemsno_entry.get()
+            xb=itemname_entry.get()
+            xc=price_entry.get()
+            xd=qty.get()
+            sql="insert into items values(%d,'%d','%d','%s','%d')"%(x,xa,xb,xc,xd)
+            cur.execute(sql)
+            db.commit()
+            messagebox.showinfo('Hi','Saved Record')
+            itemname_entry.delete(0,100)
+            price_entry.delete(0,100)
+            qty_entry.delete(0,100)
+            db.close()
         
     def closefile():
         t.destroy()

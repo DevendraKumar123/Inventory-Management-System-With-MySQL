@@ -7,7 +7,9 @@ def disdelete():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Dispatch')
+    t.title('Dispatch Delate')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillorderid():

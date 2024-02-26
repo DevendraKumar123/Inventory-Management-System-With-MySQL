@@ -7,7 +7,9 @@ def orderdelete():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Orders')
+    t.title('Orders Delete')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillorderid():

@@ -7,6 +7,8 @@ def cupdate():
     t=tkinter.Tk()
     t.geometry('500x500')
     t.title('Company Update')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
 #----------------------------Function------------------------------------------------------
 
@@ -67,7 +69,7 @@ def cupdate():
     regno_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     regno_entry.place(x=150,y=260)
     #-----------------------------Button-----------------------------------------------------------
-    update=Button(t,text='Upadte Record',height=2,width=10,command=updatedata).place(x=50,y=320)
+    update=Button(t,text='Upadte Record',height=2,width=10,command=updatedata).place(x=50,y=400)
     close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
 
 

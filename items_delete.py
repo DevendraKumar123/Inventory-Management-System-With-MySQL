@@ -7,7 +7,9 @@ def itemdelete():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Dispatch')
+    t.title('Item Delete')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillitemsno():

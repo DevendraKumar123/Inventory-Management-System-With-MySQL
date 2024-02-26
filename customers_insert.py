@@ -7,28 +7,33 @@ def custinsert():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Customers')
+    t.title('Customers Insert')
+    t.iconbitmap('ims.ico')
+    t.config(bg='sky blue')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def insertdata():
-        db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
-        cur=db.cursor()
-        xa=int(custid_entry.get())
-        xb=name_entry.get()
-        xc=address_entry.get()
-        xd=city_entry.get()
-        xe=email_entry.get()
-        xf=phoneno_entry.get()
-        sql="insert into customers values(%d,'%s','%s','%s','%s','%s')"%(xa,xb,xc,xd,xe,xf)
-        cur.execute(sql)
-        db.commit()
-        messagebox.showinfo('Hi','Saved Record')
-        name_entry.delete(0,100)
-        address_entry.delete(0,100)
-        city_entry.delete(0,100)
-        email_entry.delete(0,100)
-        phoneno_entry.delete(0,100)
-        db.close()
+        if len(custid_entry.get())==0 or len(name_entry.get())==0 or len(city_entry.get())==0 or len(address_entry.get())==0 or len(phoneno_entry.get())==0 or len(email_entry.get())==0:
+            messagebox.showerror('Customer','Please Fill all data')
+        else:
+            db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
+            cur=db.cursor()
+            xa=int(custid_entry.get())
+            xb=name_entry.get()
+            xc=address_entry.get()
+            xd=city_entry.get()
+            xe=email_entry.get()
+            xf=phoneno_entry.get()
+            sql="insert into customers values(%d,'%s','%s','%s','%s','%s')"%(xa,xb,xc,xd,xe,xf)
+            cur.execute(sql)
+            db.commit()
+            messagebox.showinfo('Hi','Saved Record')
+            name_entry.delete(0,100)
+            address_entry.delete(0,100)
+            city_entry.delete(0,100)
+            email_entry.delete(0,100)
+            phoneno_entry.delete(0,100)
+            db.close()
 
 
     def closefile():

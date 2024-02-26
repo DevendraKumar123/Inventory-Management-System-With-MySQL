@@ -7,28 +7,33 @@ def cinsert():
     t=tkinter.Tk()
     t.geometry('500x500')
     t.title('Company Insert')
+    t.config(bg='sky blue')
+    t.iconbitmap('ims.ico')
     lt=[]
 #----------------------------Function------------------------------------------------------
 
     def insertdata():
-        db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
-        cur=db.cursor()
-        xa=int(comid_entry.get())
-        xb=name_entry.get()
-        xc=address_entry.get()
-        xd=city_entry.get()
-        xe=email_entry.get()
-        xf=regno_entry.get()
-        sql="insert into company values(%d,'%s','%s','%s','%s','%s')"%(xa,xb,xc,xd,xe,xf)
-        cur.execute(sql)
-        db.commit()
-        messagebox.showinfo('Hi','Saved Record')
-        name_entry.delete(0,100)
-        address_entry.delete(0,100)
-        city_entry.delete(0,100)
-        email_entry.delete(0,100)
-        regno_entry.delete(0,100)
-        db.close()
+        if len(comid_entry.get())==0 or len(name_entry.get())==0  or len(address_entry.get())==0 or len(city_entry.get())==0  or len(email_entry.get())==0 or len(regno.get())==0:
+            messagebox.showerror("Company","Pls fill all data")
+        else:
+            db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
+            cur=db.cursor()
+            xa=int(comid_entry.get())
+            xb=name_entry.get()
+            xc=address_entry.get()
+            xd=city_entry.get()
+            xe=email_entry.get()
+            xf=regno_entry.get()
+            sql="insert into company values(%d,'%s','%s','%s','%s','%s')"%(xa,xb,xc,xd,xe,xf)
+            cur.execute(sql)
+            db.commit()
+            messagebox.showinfo('Hi','Saved Record')
+            name_entry.delete(0,100)
+            address_entry.delete(0,100)
+            city_entry.delete(0,100)
+            email_entry.delete(0,100)
+            regno_entry.delete(0,100)
+            db.close()
 
 
 
@@ -58,7 +63,7 @@ def cinsert():
     regno_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     regno_entry.place(x=150,y=260)
     #-----------------------------Button-----------------------------------------------------------
-    insert=Button(t,text='Insert Record',height=2,width=10,command=insertdata).place(x=50,y=320)
+    insert=Button(t,text='Insert Record',height=2,width=10,command=insertdata).place(x=50,y=400)
     close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
 
 

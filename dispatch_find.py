@@ -7,7 +7,9 @@ def disfind():
         
     t=tkinter.Tk()
     t.geometry('500x500')
-    t.title('Company Dispatch')
+    t.title('Dispatch Find')
+    t.config(bg='sky blue')
+    t.iconbitmap('ims.ico')
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillorderid():
@@ -62,7 +64,7 @@ def disfind():
     qty_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     qty_entry.place(x=150,y=220)
     #-----------------------------Button-----------------------------------------------------------
-    find=Button(t,text='Find Record',height=2,width=10,command=finddata).place(x=300,y=320)
+    find=Button(t,text='Find Record',height=2,width=10,command=finddata).place(x=300,y=400)
     close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
 
 
