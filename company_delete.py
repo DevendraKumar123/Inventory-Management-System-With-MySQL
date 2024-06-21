@@ -5,10 +5,11 @@ from tkinter import messagebox
 import pymysql
 def cdelete():
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Company Delete')
     t.config(bg='sky blue')
     t.iconbitmap('ims.ico')
+    t.resizable(0,0)
     lt=[]
 #----------------------------Function------------------------------------------------------
 
@@ -37,7 +38,7 @@ def cdelete():
         t.destroy()
     #-----------------------------Label----------------------------------------------------------------------------------
     ims=Label(t,text='Invantory Management System',height=2,width=50,bg='yellow',font=('Arial',15,'bold')).place(x=0,y=0)
-    compid=Label(t,text='Company Id :-',font=('Arial',10,'bold')).place(x=10,y=60)
+    compid=Label(t,text='Company Id :-',font=('Arial',13,'bold'),bg='sky blue').place(x=10,y=60)
     
 
     #-----------------------------Entry----------------------------------------------------------------------------------
@@ -47,8 +48,8 @@ def cdelete():
     comid_entry['values']=lt
 
     #-----------------------------Button-----------------------------------------------------------
-    delete=Button(t,text='Delete Record',height=2,width=10,command=delcomid).place(x=50,y=400)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
+    delete=Button(t,text='Delete Record',height=2,width=15,font=('Arial',10,'bold'),command=delcomid).place(x=50,y=400)
+    close=Button(t,text='Close File',height=2,width=15,font=('Arial',10,'bold'),command=closefile).place(x=200,y=400)
 
 
     t.mainloop()

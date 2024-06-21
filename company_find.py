@@ -5,10 +5,11 @@ from tkinter import messagebox
 import pymysql
 def cfind():
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Company Find')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
 #----------------------------Function------------------------------------------------------
 
@@ -46,12 +47,12 @@ def cfind():
         t.destroy()
     #-----------------------------Label----------------------------------------------------------------------------------
     ims=Label(t,text='Invantory Management System',height=2,width=50,bg='yellow',font=('Arial',15,'bold')).place(x=0,y=0)
-    compid=Label(t,text='Company Id :-',font=('Arial',10,'bold')).place(x=10,y=60)
-    name=Label(t,text='Name :-',font=('Arial',10,'bold')).place(x=10,y=100)
-    address=Label(t,text='Address :-',font=('Arial',10,'bold')).place(x=10,y=140)
-    city=Label(t,text='City :-',font=('Arial',10,'bold')).place(x=10,y=180)
-    email=Label(t,text='Email Id :-',font=('Arial',10,'bold')).place(x=10,y=220)
-    regno=Label(t,text='Reg No :-',font=('Arial',10,'bold')).place(x=10,y=260)
+    compid=Label(t,text='Company Id :-',font=('Arial',10,'bold'),bg='skyblue').place(x=10,y=60)
+    name=Label(t,text='Name :-',font=('Arial',10,'bold'),bg='skyblue').place(x=10,y=100)
+    address=Label(t,text='Address :-',font=('Arial',10,'bold'),bg='skyblue').place(x=10,y=140)
+    city=Label(t,text='City :-',font=('Arial',10,'bold'),bg='skyblue').place(x=10,y=180)
+    email=Label(t,text='Email Id :-',font=('Arial',10,'bold'),bg='skyblue').place(x=10,y=220)
+    regno=Label(t,text='Reg No :-',font=('Arial',10,'bold'),bg='skyblue').place(x=10,y=260)
 
     #-----------------------------Entry----------------------------------------------------------------------------------
     comid_entry=ttk.Combobox(t,width=25,font=('Arial',10,'bold'))
@@ -69,8 +70,8 @@ def cfind():
     regno_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     regno_entry.place(x=150,y=260)
     #-----------------------------Button-----------------------------------------------------------
-    find=Button(t,text='Find Record',height=2,width=10,command=finddata).place(x=100,y=320)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=300,y=320)
+    find=Button(t,text='Find Record',height=2,width=12,font=('Arial',10,'bold'),command=finddata).place(x=100,y=320)
+    close=Button(t,text='Close File',height=2,width=12,font=('Arial',10,'bold'),command=closefile).place(x=300,y=320)
 
 
     t.mainloop()

@@ -6,15 +6,17 @@ import pymysql
 def custinsert():
         
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Customers Insert')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
     #----------------------------Function------------------------------------------------------
     def insertdata():
         if len(custid_entry.get())==0 or len(name_entry.get())==0 or len(city_entry.get())==0 or len(address_entry.get())==0 or len(phoneno_entry.get())==0 or len(email_entry.get())==0:
-            messagebox.showerror('Customer','Please Fill all data')
+            # messagebox.showerror('Customer','Please Fill all data')
+            notif1.config(text='Please Fill all data..')
         else:
             db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
             cur=db.cursor()
@@ -38,6 +40,24 @@ def custinsert():
 
     def closefile():
         t.destroy()
+
+    def searchId():
+        if len(custid_entry.get())==0:
+            notif.config(text='plz fill Id')
+        else:
+            x=int(custid_entry.get())
+            db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
+            cur=db.cursor()
+            sql="select count(*) from customers where custid=%d"%(x)
+            cur.execute(sql)
+            data=cur.fetchone()
+            if data[0]==0:
+                notif.config(text='Pls go Ahead...')
+                # messagebox.showerror('hi','Already Exists...')
+            else:
+                notif.config(text='Already Exists..')
+                # messagebox.showinfo('hi','Pls go Ahead...')
+            db.close()
     #-----------------------------Label----------------------------------------------------------------------------------
     ims=Label(t,text='Invantory Management System',height=2,width=50,bg='yellow',font=('Arial',15,'bold')).place(x=0,y=0)
     custid=Label(t,text='Customer Id :-',font=('Arial',10,'bold')).place(x=10,y=60)
@@ -47,6 +67,10 @@ def custinsert():
     email=Label(t,text='Email Id :-',font=('Arial',10,'bold')).place(x=10,y=220)
     phoneno=Label(t,text='Phone No :-',font=('Arial',10,'bold')).place(x=10,y=260)
 
+    notif=Label(t,fg='red',bg='sky blue',font=('arial',10,'bold'))
+    notif.place(x=350,y=90)
+    notif1=Label(t,fg='red',bg='sky blue',font=('arial',10,'bold'))
+    notif1.place(x=50,y=400)
     #-----------------------------Entry----------------------------------------------------------------------------------
     custid_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     custid_entry.place(x=150,y=60)
@@ -61,8 +85,9 @@ def custinsert():
     phoneno_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     phoneno_entry.place(x=150,y=260)
     #-----------------------------Button-----------------------------------------------------------
-    insert=Button(t,text='Insert Record',height=2,width=10,command=insertdata).place(x=50,y=320)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=320)
+    insert=Button(t,text='Insert Record',height=2,width=15,font=('Arial',10,'bold'),command=insertdata).place(x=50,y=350)
+    close=Button(t,text='Close File',height=2,width=15,font=('Arial',10,'bold'),command=closefile).place(x=200,y=350)
+    search=Button(t,text='Check ID',height=1,width=10,font=('arial',10,'bold'),command=searchId).place(x=350,y=60)
 
 
     t.mainloop()

@@ -6,10 +6,11 @@ import pymysql
 def itemupdate():
         
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Item Update')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillitemsno():
@@ -61,8 +62,8 @@ def itemupdate():
     qty_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     qty_entry.place(x=150,y=180)
     #-----------------------------Button-----------------------------------------------------------
-    update=Button(t,text='Update Record',height=2,width=15,command=updatedata).place(x=50,y=320)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=320)
+    update=Button(t,text='Update Record',height=2,width=15,font=('Arial',10,'bold'),command=updatedata).place(x=50,y=320)
+    close=Button(t,text='Close File',height=2,width=10,font=('Arial',10,'bold'),command=closefile).place(x=200,y=320)
 
 
     t.mainloop()

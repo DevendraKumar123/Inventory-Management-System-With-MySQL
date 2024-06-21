@@ -6,10 +6,11 @@ import pymysql
 def custdelete():
         
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Customers Delete')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillcustid():
@@ -48,8 +49,8 @@ def custdelete():
     custid_entry['values']=lt
    
     #-----------------------------Button-----------------------------------------------------------
-    delete=Button(t,text='Delete Record',height=2,width=10,command=delcomid).place(x=50,y=400)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
+    delete=Button(t,text='Delete Record',height=2,width=15,font=('Arial',10,'bold'),command=delcomid).place(x=50,y=400)
+    close=Button(t,text='Close File',height=2,width=15,font=('Arial',10,'bold'),command=closefile).place(x=200,y=400)
 
 
     t.mainloop()

@@ -5,10 +5,11 @@ from tkinter import messagebox
 import pymysql
 def cupdate():
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Company Update')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
 #----------------------------Function------------------------------------------------------
 
@@ -24,7 +25,7 @@ def cupdate():
 
 
     def updatedata():
-        db=pymysql.connect(host='localhost',user='root',password='root',database='testdb')
+        db=pymysql.connect(host='localhost',user='root',password='root',database='IMS')
         cur=db.cursor()
         x=int(comid_entry.get())
         xa=name_entry.get()
@@ -69,8 +70,8 @@ def cupdate():
     regno_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     regno_entry.place(x=150,y=260)
     #-----------------------------Button-----------------------------------------------------------
-    update=Button(t,text='Upadte Record',height=2,width=10,command=updatedata).place(x=50,y=400)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
+    update=Button(t,text='Upadte Record',height=2,width=15,font=('Arial',10,'bold'),command=updatedata).place(x=50,y=400)
+    close=Button(t,text='Close File',height=2,width=15,font=('Arial',10,'bold'),command=closefile).place(x=200,y=400)
 
 
     t.mainloop()

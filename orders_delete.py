@@ -6,10 +6,11 @@ import pymysql
 def orderdelete():
         
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Orders Delete')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillorderid():
@@ -45,8 +46,8 @@ def orderdelete():
     orderid_entry['values']=lt
 
     #-----------------------------Button-----------------------------------------------------------
-    delete=Button(t,text='Delete Record',height=2,width=10,command=delorderid).place(x=50,y=400)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
+    delete=Button(t,text='Delete Record',height=2,width=15,font=('Arial',10,'bold'),command=delorderid).place(x=50,y=400)
+    close=Button(t,text='Close File',height=2,width=15,font=('Arial',10,'bold'),command=closefile).place(x=200,y=400)
 
 
     t.mainloop()

@@ -6,10 +6,11 @@ import pymysql
 def billdelete():
         
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Bill Delete')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillbillid():
@@ -36,7 +37,7 @@ def billdelete():
         t.destroy()
     #-----------------------------Label----------------------------------------------------------------------------------
     ims=Label(t,text='Invantory Management System',height=2,width=50,bg='yellow',font=('Arial',15,'bold')).place(x=0,y=0)
-    billid=Label(t,text='Bill Id :-',font=('Arial',10,'bold')).place(x=10,y=60)
+    billid=Label(t,text='Bill Id :-',font=('Arial',10,'bold'),bg='sky blue').place(x=10,y=60)
 
     #-----------------------------Entry----------------------------------------------------------------------------------
     billid_entry=ttk.Combobox(t,width=25,font=('Arial',10,'bold'))
@@ -45,8 +46,8 @@ def billdelete():
     billid_entry['values']=lt
    
     #-----------------------------Button-----------------------------------------------------------
-    delete=Button(t,text='Delete Record',height=2,width=10,command=delbillid).place(x=50,y=400)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
+    delete=Button(t,text='Delete Record',height=2,width=15,command=delbillid,font=('Arial',10,'bold')).place(x=50,y=400)
+    close=Button(t,text='Close File',height=2,width=15,command=closefile,font=('Arial',10,'bold')).place(x=200,y=400)
 
 
     t.mainloop()

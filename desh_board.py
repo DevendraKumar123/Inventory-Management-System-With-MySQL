@@ -1,7 +1,6 @@
 import tkinter
 from tkinter import*
 from tkinter import messagebox
-import pymysql
 from company_update import*
 from company_insert import*
 from company_find import *
@@ -26,28 +25,30 @@ from items_update import*
 from items_insert import*
 from items_find import *
 from items_delete import*
+# from company_show_data import*
 
-
+# def login():
 
 t=tkinter.Tk()
 
-t.geometry('700x650')
-t.iconbitmap('ims2.ico')
+t.geometry('750x650+5+-5')
+t.iconbitmap('img/ims2.ico')
 t.title('Dash Board Inventory Management System')
 #----------------------------Canvas--------------------------------------------
 t.config(bg='sky blue')
-t.minsize(600,700)
-t.maxsize(600,710)
+t.minsize(750,700)
+t.maxsize(750,710)
+
 #--------------------------Function-------------------------------------
 def cldesh():
     t.destroy()
 #----------------------------------------Label--------------------------------------
-company=Label(t,text='Comapny',height=2,width=100,bg='#FFA500',font=('arial',10,'bold')).place(x=-100,y=0)
-customer=Label(t,text='Customers',height=2,width=100,bg='#FFA500',font=('arial',10,'bold')).place(x=-100,y=100)
-bill=Label(t,text='Bill',height=2,width=100,bg='#FFA500',font=('arial',10,'bold')).place(x=-100,y=200)
-dispatch=Label(t,text='Dispatch',height=2,width=100,bg='#FFA500',font=('arial',10,'bold')).place(x=-100,y=300)
-items=Label(t,text='Items',height=2,width=100,bg='#FFA500',font=('arial',10,'bold')).place(x=-100,y=400)
-order=Label(t,text='Orders',height=2,width=100,bg='#FFA500',font=('arial',10,'bold')).place(x=-100,y=500)
+company=Label(t,text='Company',height=2,width=100,bg='#FFA500',font=('arial',13,'bold')).place(x=-100,y=0)
+customer=Label(t,text='Customers',height=2,width=100,bg='#FFA500',font=('arial',13,'bold')).place(x=-100,y=100)
+bill=Label(t,text='Bill',height=2,width=100,bg='#FFA500',font=('arial',13,'bold')).place(x=-100,y=200)
+dispatch=Label(t,text='Dispatch',height=2,width=100,bg='#FFA500',font=('arial',13,'bold')).place(x=-100,y=300)
+items=Label(t,text='Items',height=2,width=100,bg='#FFA500',font=('arial',13,'bold')).place(x=-100,y=400)
+order=Label(t,text='Orders',height=2,width=100,bg='#FFA500',font=('arial',13,'bold')).place(x=-100,y=500)
 
 #----------------------------------------Company Button-----------------------------
 c_insert=Button(t,text='Insert',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=cinsert)
@@ -58,6 +59,8 @@ c_find=Button(t,text='Find',command=cfind,height=2,width=10,bg='white',activebac
 c_find.place(x=310,y=50)
 c_delete=Button(t,text='Delete',command=cdelete,height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'))
 c_delete.place(x=440,y=50)
+c_show_data=Button(t,text='Show all Data',height=2,width=15,bg='white',activebackground='sky blue',font=('arial',10,'bold'))
+c_show_data.place(x=570,y=50)
 #-------------------------------Customers----------------------------------------
 cust_insert=Button(t,text='Insert',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=custinsert)
 cust_insert.place(x=50,y=150)
@@ -67,6 +70,8 @@ cust_find=Button(t,text='Find',height=2,width=10,bg='white',activebackground='sk
 cust_find.place(x=310,y=150)
 cust_delete=Button(t,text='Delete',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=custdelete)
 cust_delete.place(x=440,y=150)
+cust_show_data=Button(t,text='Show all Data',height=2,width=15,bg='white',activebackground='sky blue',font=('arial',10,'bold'))
+cust_show_data.place(x=570,y=150)
 #------------------------------------bill----------------------------------------
 bill_insert=Button(t,text='Insert',height=2,width=10,activeforeground='red',bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=billinsert)
 bill_insert.place(x=50,y=250)
@@ -76,6 +81,8 @@ bill_find=Button(t,text='Find',height=2,width=10,bg='white',activebackground='sk
 bill_find.place(x=310,y=250)
 bill_delete=Button(t,text='Delete',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=billdelete)
 bill_delete.place(x=440,y=250)
+bill_show_data=Button(t,text='Show all Data',height=2,width=15,bg='white',activebackground='sky blue',font=('arial',10,'bold'))
+bill_show_data.place(x=570,y=250)
 #---------------------------------dispatch--------------------------------------
 dispatch_insert=Button(t,text='Insert',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=disinsert)
 dispatch_insert.place(x=50,y=350)
@@ -85,6 +92,8 @@ dispatch_find=Button(t,text='Find',height=2,width=10,bg='white',activebackground
 dispatch_find.place(x=310,y=350)
 dispatch_delete=Button(t,text='Delete',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=disdelete)
 dispatch_delete.place(x=440,y=350)
+dispatch_show_data=Button(t,text='Show all Data',height=2,width=15,bg='white',activebackground='sky blue',font=('arial',10,'bold'))
+dispatch_show_data.place(x=570,y=350)
 #---------------------------------item------------------------------------------
 items_insert=Button(t,text='Insert',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=iteminsert)
 items_insert.place(x=50,y=450)
@@ -94,6 +103,8 @@ items_find=Button(t,text='Find',height=2,width=10,bg='white',activebackground='s
 items_find.place(x=310,y=450)
 items_delete=Button(t,text='Delete',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=itemdelete)
 items_delete.place(x=440,y=450)
+items_show_data=Button(t,text='Show all Data',height=2,width=15,bg='white',activebackground='sky blue',font=('arial',10,'bold'))
+items_show_data.place(x=570,y=450)
 #----------------------------------orders------------------------------------
 order_insert=Button(t,text='Insert',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=orderinsert)
 order_insert.place(x=50,y=550)
@@ -103,9 +114,11 @@ order_find=Button(t,text='Find',height=2,width=10,bg='white',activebackground='s
 order_find.place(x=310,y=550)
 order_delete=Button(t,text='Delete',height=2,width=10,bg='white',activebackground='sky blue',font=('arial',10,'bold'),command=orderdelete)
 order_delete.place(x=440,y=550)
+order_show_data=Button(t,text='Show all Data',height=2,width=15,bg='white',activebackground='sky blue',font=('arial',10,'bold'))
+order_show_data.place(x=570,y=550)
 #------------------------------close file----------------------------------------------------
-cldesh=Button(t,text='Deshboard Close',width=50,height=2,font=('arial',10,'bold'),bg='#EE9A00',activebackground='red',activeforeground='yellow',command=cldesh)
-cldesh.place(x=100,y=650)
+cldesh=Button(t,text='Deshboard Close',width=50,height=2,font=('arial',13,'bold'),bg='#EE9A00',activebackground='red',activeforeground='yellow',command=cldesh)
+cldesh.place(x=150,y=630)
 #--------------------------------------Entry-----------------------------------
 
 t.mainloop()

@@ -6,10 +6,11 @@ import pymysql
 def disupdate():
         
     t=tkinter.Tk()
-    t.geometry('500x500')
+    t.geometry('500x500+605+0')
     t.title('Dispatch Update')
     t.iconbitmap('ims.ico')
     t.config(bg='sky blue')
+    t.resizable(0,0)
     lt=[]
     #----------------------------Function------------------------------------------------------
     def fillorderid():
@@ -67,8 +68,8 @@ def disupdate():
     qty_entry=Entry(t,width=25,font=('Arial',10,'bold'))
     qty_entry.place(x=150,y=220)
     #-----------------------------Button-----------------------------------------------------------
-    update=Button(t,text='Update Record',height=2,width=15,command=updatedata).place(x=150,y=400)
-    close=Button(t,text='Close File',height=2,width=10,command=closefile).place(x=200,y=400)
+    update=Button(t,text='Update Record',height=2,width=15,font=('Arial',10,'bold'),command=updatedata).place(x=50,y=350)
+    close=Button(t,text='Close File',height=2,width=10,font=('Arial',10,'bold'),command=closefile).place(x=250,y=350)
 
 
     t.mainloop()
